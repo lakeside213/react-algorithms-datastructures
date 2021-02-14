@@ -5,7 +5,7 @@ import Home from "../components/pages/Home";
 import Sorting from "../components/Sorting";
 import BubbleSort from "../components/Sorting/BubbleSort";
 
-const path = (path) => {
+export const path = (path) => {
     console.log(path, )
     if(process.env.NODE_ENV == "development"){
         return path
