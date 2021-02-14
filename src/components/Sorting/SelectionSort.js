@@ -14,7 +14,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
-export default function BubbleSort() {
+export default function SelectionSort() {
   const order  = useSelector(state => state.order.order);
   const [elements, setElements] = useState("");
   const [appLog, setAppLog] = useState([]);
@@ -23,6 +23,7 @@ export default function BubbleSort() {
   const onClick= ()=> {
     setAppLog([]);
     setSortedArray([]);
+   
     let arr = elements.split(",");
     const parsedArr = arr.map(function(element) { 
         element.trim();
@@ -32,7 +33,7 @@ export default function BubbleSort() {
         }
         return element;
       });
-    bubbleSort(parsedArr);
+    selectionSort(parsedArr);
     
   }
   const handleChange= (event)=> {
@@ -43,54 +44,50 @@ export default function BubbleSort() {
     console.log(ele)
 }
 
-
-function bubbleSort (inputArr){
-    let len = inputArr.length;
-    let swapped;
-    let index = 1;
+function selectionSort(vetor) {
+    let minor;
+    let message;
     let log = [];
-    do {
-        swapped = false;
-        let message = `${index} iteration ${inputArr.toString()}`;
-        index++;
+    for (let i = 0; i < vetor.length - 1; i += 1) {
+        message = `${i + 1} iteration ${vetor.toString()}`;
         log.push(message);
-        for (let i = 0; i < len; i++) {
-            if(order === "ascending"){
-                if (inputArr[i] > inputArr[i + 1]) {
-                    message = `swapped ${inputArr[i]} with ${inputArr[i+1]}`;
-                    log.push(message);
-                    let tmp = inputArr[i];
-                    inputArr[i] = inputArr[i + 1];
-                    inputArr[i + 1] = tmp;
-                    swapped = true;
-                    message = `result: ${inputArr.toString()}`;
-                    log.push(message);
-                }else{
-                    message = `${inputArr[i]} is smaller than ${inputArr[i+1]}, no change`;
-                    log.push(message);
-                }
-            }else{
-                if (inputArr[i] < inputArr[i + 1]) {
-                    message = `swapped ${inputArr[i]} with ${inputArr[i+1]}`;
-                    log.push(message);
-                    let tmp = inputArr[i];
-                    inputArr[i] = inputArr[i + 1];
-                    inputArr[i + 1] = tmp;
-                    swapped = true;
-                    message = `result: ${inputArr.toString()}`;
-                    log.push(message);
-                }else{
-                    message = `${inputArr[i]} is bigger than ${inputArr[i+1]}, no change`;
-                    log.push(message);
+        minor = i;
+        if(order === "ascending"){
+            for (let j = i + 1; j < vetor.length; j += 1) {
+                if (vetor[j] < vetor[minor]) {
+                    minor = j;
                 }
             }
-            
+            message = `The smallest element ${vetor[minor]}`;
+            log.push(message);
+        }else{
+            for (let j = i + 1; j < vetor.length; j += 1) {
+                if (vetor[j] > vetor[minor]) {
+                    minor = j;
+                }
+            }
+            message = `The biggest element ${vetor[minor]}`;
+            log.push(message);
         }
-    } while (swapped);
+        
+        if (i !== minor) {
+            message = `Swap ${vetor[minor]} with ${vetor[i]}`;
+            log.push(message);
+            [vetor[i], vetor[minor]] = [vetor[minor], vetor[i]];
+        }else{
+            message = `No swap is possible between ${vetor[minor]} and ${vetor[i]}`;
+            log.push(message);
+        }
+        message = `The array is ${vetor.toString()}`;
+        log.push(message);
+    }
     setAppLog(appLog => appLog.concat(log));
-    setSortedArray(sortedArray => sortedArray.concat(inputArr));
+    setSortedArray(sortedArray => sortedArray.concat(vetor));
+}
 
-};
+
+
+
 
 
   return (
@@ -117,3 +114,5 @@ function bubbleSort (inputArr){
     </BaseContainer> 
   );
 }
+
+
