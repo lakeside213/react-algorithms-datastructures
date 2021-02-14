@@ -7,10 +7,10 @@ import BubbleSort from "../components/Sorting/BubbleSort";
 
 export const path = (path) => {
     console.log(path, )
-    if(process.env.NODE_ENV == "development"){
+    if(process.env.NODE_ENV === "development"){
         return path
     }
-    return process.env.PUBLIC_URL +"/";
+    return process.env.PUBLIC_URL + path;
 }
 
 const routes = (
