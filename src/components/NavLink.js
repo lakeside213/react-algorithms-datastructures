@@ -2,14 +2,15 @@ import React from 'react';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import { useHistory } from "react-router-dom";
-import { path } from "path";
+import { path as getPath } from "../routes/index";
 
 
 
 export default function NavLink({pathname, path, hasPrevRoute=false}) {
   let history = useHistory();
   const goToPath = () => {
-    history.push(path(path), { prevRoute: hasPrevRoute })
+    const url = getPath(path);
+    history.push(url, { prevRoute: hasPrevRoute })
   }
 
   return (
