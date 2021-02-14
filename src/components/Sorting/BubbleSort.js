@@ -17,9 +17,11 @@ export default function BubbleSort() {
   const order  = useSelector(state => state.order.order);
   const [elements, setElements] = useState("");
   const [appLog, setAppLog] = useState([]);
+  const [sortedArray, setSortedArray] = useState([]);
 
   const onClick= ()=> {
-    setAppLog([]) 
+    setAppLog([]);
+    setSortedArray([]);
     const arr = elements.split(",");
     console.log(arr);
     bubbleSort(arr);
@@ -77,7 +79,9 @@ function bubbleSort (inputArr){
             
         }
     } while (swapped);
-    setAppLog(appLog => appLog.concat(log)) 
+    setAppLog(appLog => appLog.concat(log));
+    setSortedArray(sortedArray => sortedArray.concat(inputArr));
+
 };
 
 
@@ -91,16 +95,17 @@ function bubbleSort (inputArr){
         />
         <Button onClick={onClick} variant="contained">Sort</Button>
 
-    <List subheader={<Typography variant="h4" marginTop>
+    <List subheader={<Typography variant="h4">
         Steps
       </Typography>}>
-        {appLog.map((step) => (
-         <ListItem divider>
-             { step.includes("iteration") ? <ListSubheader>{step}</ListSubheader> : <ListItemText  primary={step} />}
-            
-          </ListItem>
+        {appLog.map((step, index) => (
+        step.includes("iteration") ? <ListSubheader key={index}>{step}</ListSubheader> : <ListItem divider key={index}><ListItemText  primary={step} /></ListItem>
+         
         ))}
     </List>
+    <Typography variant="h5">
+        Answer is {sortedArray.toString()}
+      </Typography>
     </BaseContainer> 
   );
 }
