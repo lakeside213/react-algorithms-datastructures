@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home() {
   const classes = useStyles();
-  let { path, url } = useRouteMatch();
+  let url = 'sorting';
   return (
     <List
       component="nav"
