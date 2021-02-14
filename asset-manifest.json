@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/react-algorithms-datastructures/static/js/main.03a4fe19.chunk.js",
-    "main.js.map": "/react-algorithms-datastructures/static/js/main.03a4fe19.chunk.js.map",
+    "main.js": "/react-algorithms-datastructures/static/js/main.1977305e.chunk.js",
+    "main.js.map": "/react-algorithms-datastructures/static/js/main.1977305e.chunk.js.map",
     "runtime-main.js": "/react-algorithms-datastructures/static/js/runtime-main.5f3a9463.js",
     "runtime-main.js.map": "/react-algorithms-datastructures/static/js/runtime-main.5f3a9463.js.map",
     "static/js/2.5eafc1dd.chunk.js": "/react-algorithms-datastructures/static/js/2.5eafc1dd.chunk.js",
@@ -12,6 +12,6 @@
   "entrypoints": [
     "static/js/runtime-main.5f3a9463.js",
     "static/js/2.5eafc1dd.chunk.js",
-    "static/js/main.03a4fe19.chunk.js"
+    "static/js/main.1977305e.chunk.js"
   ]
 }
