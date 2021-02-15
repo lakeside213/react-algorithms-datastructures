@@ -24,6 +24,7 @@ export default function Home() {
         <NavLink pathname="Quick Sort " path={`${subpath}/quick-sort`} />
         <NavLink pathname="Insertion Sort" path={`${subpath}/insertion-sort`} />
         <NavLink pathname="Merge Sort" path={`${subpath}/merge-sort`} />
+        <NavLink pathname="Heap Sort" path={`${subpath}/heap-sort`} />
 
            
               

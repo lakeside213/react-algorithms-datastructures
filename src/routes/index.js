@@ -7,11 +7,11 @@ import BubbleSort from "../components/Sorting/BubbleSort";
 import SelectionSort from "../components/Sorting/SelectionSort";
 import QuickSort from "../components/Sorting/QuickSort";
 import MergeSort from "../components/Sorting/MergeSort";
+import HeapSort from "../components/Sorting/HeapSort";
 
 export const path = (path) => {
-    console.log(path, )
     if(process.env.NODE_ENV === "development"){
-        return path
+        return path;
     }
     return process.env.PUBLIC_URL + path;
 }
@@ -21,6 +21,7 @@ const routes = (
     <NavBar />
     <Switch>
       <Route exact path={path("/")} label="Home" component={Home} />
+      <Route path={path('/sorting/heap-sort')} component={HeapSort} />
       <Route path={path('/sorting/merge-sort')} component={MergeSort} />
       <Route path={path('/sorting/quick-sort')} component={QuickSort} />
       <Route path={path('/sorting/selection-sort')} component={SelectionSort} />
